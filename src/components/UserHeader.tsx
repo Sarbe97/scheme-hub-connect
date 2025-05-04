@@ -1,14 +1,12 @@
-
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { 
-  DropdownMenu, 
-  DropdownMenuContent, 
-  DropdownMenuItem, 
-  DropdownMenuTrigger 
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import { User } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const UserHeader = () => {
   const navigate = useNavigate();

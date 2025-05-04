@@ -1,34 +1,31 @@
-
 import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import LoginPage from "./pages/LoginPage";
-import UserDashboard from "./pages/UserDashboard";
-import NewClaimPage from "./pages/NewClaimPage";
+import { FormProvider } from "@/context/FormContext";
+import Login from "@/pages/Login";
+import Profile from "@/pages/Profile";
+import Register from "@/pages/Register";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import SchemeDetails from "./components/SchemeDetails";
+import SuccessPage from "./components/SuccessPage";
+import LandingPage from "./pages/LandingPage";
 import NotFound from "./pages/NotFound";
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+function App() {
+  return (
+    <FormProvider>
+      <Router>
         <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/dashboard" element={<UserDashboard />} />
-          <Route path="/dashboard/new-claim" element={<NewClaimPage />} />
-          {/* Add more dashboard routes as needed */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/schemes" element={<SchemeDetails />} />
+          <Route path="/success" element={<SuccessPage />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+        <Toaster />
+      </Router>
+    </FormProvider>
+  );
+}
 
 export default App;
